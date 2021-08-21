@@ -1,6 +1,7 @@
 
 
-# Panoptic Segmentation using DETR (DEtection TRansformers) - Assignment 1 - Due 21-Aug
+# Panoptic Segmentation using DETR (DEtection TRansformers) 
+## - Assignment 1 - Due 21-Aug
 
 ### 1. We take the encoded image (dxH/32xW/32) and send it to Multi-Head Attention (FROM WHERE DO WE TAKE THIS ENCODED IMAGE?)
 The Encoded Image is taken from the DETR Encoder Output, by default d=256. 
