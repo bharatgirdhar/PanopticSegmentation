@@ -3,13 +3,13 @@
 ### 1. We take the encoded image (dxH/32xW/32) and send it to Multi-Head Attention (FROM WHERE DO WE TAKE THIS ENCODED IMAGE?)
 The Encoded Image is taken from the DETR Encoder Output, by default d=256. 
 
-CNN Backbone of the DETR outputs a Low Resolution Feature Map of h/32 and w/32. This output is matched with the Hidden Dimensions pof DETR (256 default) and then sent to Encoder. The Output of the Encoder is Image Features of the same Dimension. This Output is used as Encoded Image (one of the Inputs) to the Multi Head Attention for Panoptic Segmentation.
+CNN Backbone of the DETR outputs a Low Resolution Feature Map of h/32 and w/32. This output is matched with the Hidden Dimensions of DETR (256 default) and then sent to Encoder. The Output of the Encoder is Image Features of the same Dimension. This Output is used as Encoded Image (one of the Inputs) to the Multi Head Attention for Panoptic Segmentation.
 
 
 
 ### 2. We do something here to generate NxMxH/32xW/32 maps. (WHAT DO WE DO HERE?)
 
-We use Multi-head attention layer to generate Attention Scores over the Encoded Image (d*H/32*W/32) for each Object Embedding (N). This results in N*M*H/32*W/32 attention maps.
+We use Multi-head attention layer to generate Attention Scores over the Encoded Image (dxH/32xW/32) for each Object Embedding (N). This results in NxMxH/32xW/32 attention maps.
 
 
 ### 3. Then we concatenate these maps with Res5 Block (WHERE IS THIS COMING FROM?)
