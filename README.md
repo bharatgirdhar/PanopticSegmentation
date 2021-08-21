@@ -1,22 +1,22 @@
 # Panoptic Segmentation using DETR (DEtection TRansformers)
 
-### We take the encoded image (dxH/32xW/32) and send it to Multi-Head Attention (FROM WHERE DO WE TAKE THIS ENCODED IMAGE?)
+### 1. We take the encoded image (dxH/32xW/32) and send it to Multi-Head Attention (FROM WHERE DO WE TAKE THIS ENCODED IMAGE?)
 The Encoded Image is taken from the DETR Encoder Output, by default d=256. 
 
 CNN Backbone of the DETR outputs a Low Resolution Feature Map of h/32 and w/32. This output is matched with the Hidden Dimensions pof DETR (256 default) and then sent to Encoder. The Output of the Encoder is Image Features of the same Dimension. This Output is used as Encoded Image (one of the Inputs) to the Multi Head Attention for Panoptic Segmentation.
 
 
 
-### We do something here to generate NxMxH/32xW/32 maps. (WHAT DO WE DO HERE?)
+### 2. We do something here to generate NxMxH/32xW/32 maps. (WHAT DO WE DO HERE?)
 
 We use Multi-head attention layer to generate Attention Scores over the Encoded Image (d*H/32*W/32) for each Object Embedding (N). This results in N*M*H/32*W/32 attention maps.
 
 
-### Then we concatenate these maps with Res5 Block (WHERE IS THIS COMING FROM?)
+### 3. Then we concatenate these maps with Res5 Block (WHERE IS THIS COMING FROM?)
 
 This comes from the CNN Backbone of DETR, when the Image is passed by CNN Backbone, Activations from the Intermediate layers (Res 5, Res4, Res3 ad Res 2) are set aside so that it can be used while doing Panoptic Segmentation.
 
-### Then we perform the above steps (EXPLAIN THESE STEPS)
+### 4. Then we perform the above steps (EXPLAIN THESE STEPS)
 
 1. DETR Predicts the BBox for thing (your class) and Stuffs in the image.
 2. These BBox along with Encoded Image (from the Encoder Output) is sent to the Multi Head Attention Layer.
