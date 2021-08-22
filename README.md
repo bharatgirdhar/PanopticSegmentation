@@ -8,10 +8,10 @@
 ## Approach
 
 Our Solutioning will be Divided into 2 Phases:
-1. TO Train DETr to Predict Bounding Boxes
-2. ADD PanOptic Segmentation Head on DETR to do Segmentation.
+1. To Train DETR to Predict Bounding Boxes
+2. ADD Panoptic Segmentation Head on DETR to do Segmentation.
 
-### Phase 1:
+## Phase 1:
 We will First train DETR to predict the Bounding Boxes for the Construction Classses (~60) and Stuff. DETR is already trained to Predict Stuff so we will use the Pre-Trained model and then train thte model on our dataset. DETR was trained for 300 EPOCS for COCOA dataset that had 91 classes, our dataset has approx. 60 classes so the training will be done for approx. 200 EPOCS.
 
 ### Dataset
@@ -20,7 +20,7 @@ We have annotated dataset for construction classes. To have the Ground truth for
 ### Training 
 Classification head of the Pre-trained model will be removed and then it will be trained for ~250 EPOCS while checking for mAP to increase and losses to decrease.
  
-### Phase 2:
+## Phase 2:
 
 Once DETR is trained on our Custom classes we will ADD the Panoptic Head over the classification head of the trained DETR and then train for Panoptic Segmentation for approx ~25 EPOCS.
 
